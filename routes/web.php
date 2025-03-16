@@ -6,24 +6,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 // Basic routing
-Route::get('/greeting', function () {
-    return 'Hello World';
+Route::get('/students', function () {
+    return 'students data...';
 });
 
 // Redirect Routing
-Route::redirect('/redirect', '/greeting');
-
-
-// View Routing
-Route::view('/view', 'view');
+Route::redirect('/redirect', '/students');
 
 // Routing with parameters
-Route::get('/user/{id}', function (string $id) {
-    return 'User ' . $id;
+Route::get('/students/{id}', function (string $id) {
+    return 'Student ' . $id;
 });
 
 // Named routes
-Route::get('/user/profile', function () {
-    return "user profile";
-})->name('profile');
+Route::get('/students/create', function () {
+    return "create student data";
+})->name('students.create');
