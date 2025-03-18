@@ -27,8 +27,29 @@ Route::get('/', function () {
 // })->name('students.create');
 
 // connect to controller
-Route::get('/students', [StudentController::class, 'index']);
+// Route::get('/students', [StudentController::class, 'index']);
 
-Route::get('/students/{id}', [StudentController::class, 'show']);
+// Route::get('/students/{id}', [StudentController::class, 'show']);
 
-Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
+// Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
+
+// group route by controller
+// Route::controller(StudentController::class)->group(function () {
+//     Route::get('/students', 'index');
+//     Route::get('/students/{id}', 'show');
+//     Route::get('/students/create', 'create');
+// });
+
+// group prefix
+Route::prefix('students')->group(function () {
+    Route::get('/', [StudentController::class, 'index']);
+    Route::get('/{id}', [StudentController::class, 'show']);
+    Route::get('/create', [StudentController::class, 'create'])->name('create');
+});
+
+// group name prefixes
+Route::name('students.')->group(function () {
+    Route::get('/students', [StudentController::class, 'index']);
+    Route::get('/students/{id}', [StudentController::class, 'show']);
+    Route::get('/students/create', [StudentController::class, 'create'])->name('create');
+});
