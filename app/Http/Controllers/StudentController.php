@@ -8,16 +8,21 @@ class StudentController extends Controller
 {
     public function index()
     {
-        return 'students data...';
+        return view('students.index');
     }
 
     public function show(string $id)
     {
-        return 'Student ' . $id;
+        return view('students.show');
     }
 
     public function create()
     {
-        return "create student data";
+        return view('students.create');
+    }
+
+    public function edit(string $id)
+    {
+        return view('students.edit');
     }
 }
