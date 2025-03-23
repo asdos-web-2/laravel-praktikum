@@ -8,6 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
     <title>{{$title}}</title>
 </head>
 
@@ -47,11 +51,10 @@
             </nav>
             {{-- hamburger menu --}}
             <button x-on:click="open = !open" class="block sm:hidden bg-slate-50 border border-slate-400 p-2">
-                <x-icon name="hamburger" class="fill-slate-400 w-4 h-4" />
+                <i class="ph ph-list block text-slate-400"></i>
             </button>
             {{-- mobile navigation --}}
-            <div x-show="open"
-                class="bg-white border border-zinc-300 shadow-lg sm:hidden absolute top-12 right-3">
+            <div x-show="open" class="bg-white border border-zinc-300 shadow-lg sm:hidden absolute top-12 right-3">
                 <ul class="flex flex-col gap-2">
                     <li x-on:click="open = !open">
                         <a href="{{ route("dashboard") }}"

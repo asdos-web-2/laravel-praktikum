@@ -45,7 +45,7 @@
                 </a>
                 <a href="{{ route("students.edit", 1) }}"
                     class=" bg-yellow-50 border border-yellow-500 text-yellow-500 px-3 py-2 flex items-center gap-2 cursor-pointer">
-                    <x-icon name="edit" class="w-4 h-4 fill-yellow-500" />
+                    <i class="ph ph-note-pencil block text-yellow-500"></i>
                     <span>Edit</span>
                 </a>
             </div>

@@ -68,7 +68,7 @@
                 </a>
                 <button type="submit"
                     class=" bg-blue-50 border border-blue-500 text-blue-500 px-3 py-2 flex items-center gap-2 cursor-pointer">
-                    <x-icon name="save" class="w-4 h-4 fill-blue-500" />
+                    <i class="ph ph-floppy-disk block text-blue-500"></i>
                     <span>Save</span>
                 </button>
             </div>
