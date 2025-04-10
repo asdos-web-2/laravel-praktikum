@@ -67,8 +67,8 @@
             </div>
 
             <div class="flex flex-col gap-2">
-                <label for="major">Majors</label>
-                <select name="major" id="major" class="px-3 py-2 border border-zinc-300 appearance-none bg-slate-50">
+                <label for="majors">Majors</label>
+                <select name="majors" id="majors" class="px-3 py-2 border border-zinc-300 appearance-none bg-slate-50">
                     <option value="" disabled selected>Select Majors</option>
                     @foreach ($majors as $major)
                         <option value={{ $major->id }} {{ old('majors') == $major->id ? 'selected' : '' }}>{{ $major->name }}
