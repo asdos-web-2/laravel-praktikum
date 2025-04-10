@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Majors;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -9,64 +10,91 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::all();
+        $students = Student::with('majors')->get();
         return view('students.index', compact('students'));
+    }
+
+    public function show(string $id)
+    {
+        $student = Student::with('majors')->find($id);
+        return view('students.show', compact('student'));
     }
 
     public function create()
     {
-        return view('students.create');
+        $majors = Majors::all();
+        return view('students.create', compact('majors'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required',
-            'student_id_number' => 'required|unique:students,student_id_number',
-            'email' => 'required|email|unique:students,email',
+            'student_id_number' => 'required|unique:students|max:9',
+            'email' => 'required|email|unique:students',
             'phone_number' => 'required',
             'birth_date' => 'required|date',
-            'gender' => 'required',
-            'major' => 'required',
-            'status' => 'required',
+            'gender' => 'required|in:Female,Male',
+            'majors' => 'required',
+            'status' => 'required|in:Active,Inactive,Graduated,Dropped out',
         ]);
 
-        Student::create($validated);
+        Student::create([
+            'name' => $validated['name'],
+            'student_id_number' => $validated['student_id_number'],
+            'email' => $validated['email'],
+            'phone_number' => $validated['phone_number'],
+            'birth_date' => $validated['birth_date'],
+            'gender' => $validated['gender'],
+            'status' => $validated['status'],
+            'major_id' => $validated['majors'],
+        ]);
 
-        return redirect()->route('students.index')->with('success', 'Student created successfully.');
+        return redirect()->route('students.index')->with('success', 'Student created successfully');
     }
 
-    public function show(Student $student)
+    public function edit(string $id)
     {
-        return view('students.show', compact('student'));
+        $student = Student::with('majors')->find($id);
+        $majors = Majors::all();
+        return view('students.edit', compact('student', 'majors'));
     }
 
-    public function edit(Student $student)
-    {
-        return view('students.edit', compact('student'));
-    }
-
-    public function update(Request $request, Student $student)
+    public function update(Request $request, string $id)
     {
         $validated = $request->validate([
             'name' => 'required',
-            'student_id_number' => 'required|unique:students,student_id_number,' . $student->id,
-            'email' => 'required|email|unique:students,email,' . $student->id,
+            'student_id_number' => "required|unique:students,student_id_number,$id|max:9",
+            'email' => "required|email|unique:students,email,$id",
             'phone_number' => 'required',
             'birth_date' => 'required|date',
-            'gender' => 'required',
-            'major' => 'required',
-            'status' => 'required',
+            'gender' => 'required|in:Female,Male',
+            'majors' => 'required',
+            'status' => 'required|in:Active,Inactive,Graduated,Dropped out',
         ]);
 
-        $student->update($validated);
+        $student = Student::find($id);
 
-        return redirect()->route('students.index')->with('success', 'Student updated successfully.');
+        $student->update([
+            'name' => $validated['name'],
+            'student_id_number' => $validated['student_id_number'],
+            'email' => $validated['email'],
+            'phone_number' => $validated['phone_number'],
+            'birth_date' => $validated['birth_date'],
+            'gender' => $validated['gender'],
+            'status' => $validated['status'],
+            'major_id' => $validated['majors'],
+        ]);
+
+        return redirect()->route('students.index')->with('success', 'Student updated successfully');
     }
 
-    public function destroy(Student $student)
+    public function destroy(string $id)
     {
+        $student = Student::findOrFail($id);
+
         $student->delete();
-        return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
+
+        return redirect()->route('students.index')->with('success', 'Student deleted successfully');
     }
 }
