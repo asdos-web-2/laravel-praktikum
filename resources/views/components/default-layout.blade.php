@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route("students.index") }}"
+                        <a href="{{ route("profile.index") }}"
                             class="{{ request()->is('profile') ? 'text-black' : 'text-zinc-500' }} block px-2 py-1 rounded font-semibold hover:text-black text-sm">
                             Profile
                         </a>
@@ -69,7 +69,7 @@
                             class="block px-4 py-2 text-zinc-600 text-sm hover:bg-gray-100">Majors</a>
                     </li>
                     <li x-on:click="open = !open">
-                        <a href="{{ route("students.index") }}"
+                        <a href="{{ route("profile.index") }}"
                             class="block px-4 py-2 text-zinc-600 text-sm hover:bg-gray-100">Profile</a>
                     </li>
                 </ul>
