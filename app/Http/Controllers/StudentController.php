@@ -11,19 +11,19 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::with('majors')->get();
-        return view('students.index', ['students' => $students]);
+        return view('students.index', compact('students'));
     }
 
     public function show(string $id)
     {
         $student = Student::with('majors')->find($id);
-        return view('students.show', ['student' => $student]);
+        return view('students.show', compact('student'));
     }
 
     public function create()
     {
         $majors = Majors::all();
-        return view('students.create', ['majors' => $majors]);
+        return view('students.create', compact('majors'));
     }
 
     public function store(Request $request)
@@ -34,9 +34,9 @@ class StudentController extends Controller
             'email' => 'required|email|unique:students',
             'phone_number' => 'required',
             'birth_date' => 'required|date',
-            'gender' => 'required|in:female,male',
+            'gender' => 'required|in:Female,Male',
             'majors' => 'required',
-            'status' => 'required|in:active,on leave,graduated,dropped out',
+            'status' => 'required|in:Active,Inactive,Graduated,Dropped out',
         ]);
 
         Student::create([
@@ -57,7 +57,7 @@ class StudentController extends Controller
     {
         $student = Student::with('majors')->find($id);
         $majors = Majors::all();
-        return view('students.edit', ['student' => $student, 'majors' => $majors]);
+        return view('students.edit', compact('student', 'majors'));
     }
 
     public function update(Request $request, string $id)
@@ -68,9 +68,9 @@ class StudentController extends Controller
             'email' => "required|email|unique:students,email,$id",
             'phone_number' => 'required',
             'birth_date' => 'required|date',
-            'gender' => 'required|in:female,male',
+            'gender' => 'required|in:Female,Male',
             'majors' => 'required',
-            'status' => 'required|in:active,on leave,graduated,dropped out',
+            'status' => 'required|in:Active,Inactive,Graduated,Dropped out',
         ]);
 
         $student = Student::find($id);

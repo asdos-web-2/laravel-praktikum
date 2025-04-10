@@ -20,8 +20,8 @@ class StudentSeeder extends Seeder
                 'email' => 'farhan@gmail.com',
                 'phone_number' => '6285348203913',
                 'birth_date' => '2003-09-28',
-                'gender' => 'male',
-                'status' => 'active',
+                'gender' => 'Male',
+                'status' => 'Active',
                 'major_id' => 1,
             ],
             [
@@ -30,8 +30,8 @@ class StudentSeeder extends Seeder
                 'email' => 'muty@gmail.com',
                 'phone_number' => '6285323412112',
                 'birth_date' => '2003-08-05',
-                'gender' => 'female',
-                'status' => 'on leave',
+                'gender' => 'Female',
+                'status' => 'Inactive',
                 'major_id' => 2,
             ],
         ]);

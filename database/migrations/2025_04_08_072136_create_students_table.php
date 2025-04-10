@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->date('birth_date');
-            $table->enum('gender', ['male', 'female']);
-            $table->enum('status', ['active', 'on leave', 'graduated', 'dropped out']);
+            $table->enum('gender', ['Male', 'Female']);
+            $table->enum('status', ['Active', 'Inactive', 'Graduated', 'Dropped Out']);
             $table->foreignId('major_id')->constrained(
                 'majors',
                 'id',

@@ -39,8 +39,8 @@
                 <div class="px-3 py-2 border border-zinc-300 ">{{ $student->student_id_number }}</div>
             </div>
             <div class="self-end flex gap-2">
-                <a href="{{ route("students.index") }}"
-                    class=" bg-slate-50 border border-slate-500 text-slate-500 px-3 py-2 cursor-pointer">
+                <a href="{{ route('students.index') }}"
+                    class="bg-slate-50 border border-slate-500 text-slate-500 px-3 py-2 cursor-pointer">
                     <span>Back</span>
                 </a>
                 <a href="{{ route("students.edit", $student->id) }}"

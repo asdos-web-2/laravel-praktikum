@@ -5,10 +5,12 @@ use App\Http\Controllers\MajorsController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
+// Halaman awal
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Dashboard
 Route::get('/dashboard', [DashboardController::class, "index"])->name('dashboard');
 
 Route::get('/students', [StudentController::class, 'index'])->name("students.index");

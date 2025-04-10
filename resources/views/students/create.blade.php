@@ -4,6 +4,7 @@
             class="flex flex-col gap-4 px-6 py-4 bg-white border border-zinc-300 shadow col-span-3 md:col-span-2">
             @csrf
             @method("POST")
+
             <div class="grid sm:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-2">
                     <label for="name">Name</label>
@@ -14,7 +15,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-col gap-2">
-                    <label for="student_id_number">Student ID Number</label>
+                    <label for="student_id">Student ID Number</label>
                     <input type="text" id="student_id_number" name="student_id_number"
                         class="px-3 py-2 border border-zinc-300 bg-slate-50" placeholder="student ID (e.g., F55122001)"
                         value={{ old("student_id_number") }}>
@@ -23,6 +24,7 @@
                     @enderror
                 </div>
             </div>
+
             <div class="grid sm:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-2">
                     <label for="email">Email</label>
@@ -34,7 +36,7 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="phone_number">Phone Number</label>
-                    <input type="phone_number" id="phone_number" name="phone_number"
+                    <input type="text" id="phone_number" name="phone_number"
                         class="px-3 py-2 border border-zinc-300 bg-slate-50"
                         placeholder="Phone number (e.g., 081234567891)" value={{ old("phone_number") }}>
                     @error('phone_number')
@@ -42,6 +44,7 @@
                     @enderror
                 </div>
             </div>
+
             <div class="flex flex-col gap-2">
                 <label for="birth_date">Birth date</label>
                 <input type="date" id="birth_date" name="birth_date"
@@ -50,20 +53,22 @@
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="flex flex-col gap-2">
                 <label for="gender">Gender</label>
                 <select name="gender" id="gender" class="px-3 py-2 border border-zinc-300 appearance-none bg-slate-50">
                     <option value="" disabled {{ old('gender') == '' ? 'selected' : '' }}>Select Gender</option>
-                    <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
-                    <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+                    <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                    <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
                 </select>
                 @error('gender')
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="flex flex-col gap-2">
-                <label for="majors">Majors</label>
-                <select name="majors" id="majors" class="px-3 py-2 border border-zinc-300 appearance-none bg-slate-50">
+                <label for="major">Majors</label>
+                <select name="major" id="major" class="px-3 py-2 border border-zinc-300 appearance-none bg-slate-50">
                     <option value="" disabled selected>Select Majors</option>
                     @foreach ($majors as $major)
                         <option value={{ $major->id }} {{ old('majors') == $major->id ? 'selected' : '' }}>{{ $major->name }}
@@ -74,27 +79,29 @@
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="flex flex-col gap-2">
                 <label for="status">Status</label>
                 <select name="status" id="status" class="px-3 py-2 border border-zinc-300 appearance-none bg-slate-50">
                     <option value="" disabled selected>Select Student Status</option>
-                    <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
-                    <option value="on leave" {{ old('status') == 'on leave' ? 'selected' : '' }}>On Leave</option>
-                    <option value="graduated" {{ old('status') == 'graduated' ? 'selected' : '' }}>Graduated</option>
-                    <option value="dropped out" {{ old('status') == 'dropped out' ? 'selected' : '' }}>Dropped Out
+                    <option value="Active" {{ old('status') == 'Active' ? 'selected' : '' }}>Active</option>
+                    <option value="Inactive" {{ old('status') == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                    <option value="Graduated" {{ old('status') == 'Graduated' ? 'selected' : '' }}>Graduated</option>
+                    <option value="Dropped out" {{ old('status') == 'Dropped out' ? 'selected' : '' }}>Dropped Out
                     </option>
                 </select>
                 @error('status')
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="self-end flex gap-2">
                 <a href="{{ route("students.index") }}"
-                    class=" bg-slate-50 border border-slate-500 text-slate-500 px-3 py-2 cursor-pointer">
+                    class="bg-slate-50 border border-slate-500 text-slate-500 px-3 py-2 cursor-pointer">
                     <span>Cancel</span>
                 </a>
                 <button type="submit"
-                    class=" bg-blue-50 border border-blue-500 text-blue-500 px-3 py-2 flex items-center gap-2 cursor-pointer">
+                    class="bg-blue-50 border border-blue-500 text-blue-500 px-3 py-2 flex items-center gap-2 cursor-pointer">
                     <i class="ph ph-floppy-disk block text-blue-500"></i>
                     <span>Save</span>
                 </button>
