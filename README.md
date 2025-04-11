@@ -12,10 +12,11 @@
 ## Getting Started
 
 1. Install all dependencies `composer install`
-2. Create a new .env file `cp .env.example .env`
-3. Generate a secret key `php artisan key:generate`
-4. Run migrations `php artisan migrate`
-5. Run seeder
+2. Install npm package `npm install` and `npm run build`
+3. Create a new .env file `cp .env.example .env`
+4. Generate a secret key `php artisan key:generate`
+5. Run migrations `php artisan migrate`
+6. Run seeder
 
     ```bash
     php artisan db:seed
@@ -25,4 +26,4 @@
     php artisan db:seed --class=StudentSeeder
     ```
 
-6. Serve the application `composer run dev`
+7. Serve the application `composer run dev`
