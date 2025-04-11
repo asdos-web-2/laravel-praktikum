@@ -36,7 +36,7 @@
             </div>
             <div class="flex flex-col gap-2">
                 <div>Status</div>
-                <div class="px-3 py-2 border border-zinc-300 ">{{ $student->student_id_number }}</div>
+                <div class="px-3 py-2 border border-zinc-300 ">{{ $student->status }}</div>
             </div>
             <div class="self-end flex gap-2">
                 <a href="{{ route('students.index') }}"
